@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import './App.css';
+import CreateNotes from './components/CreateNotes';
 import Header from './components/Header';
+import NotesList from './components/NotesList';
 import { Note } from './models/note.model';
 
 
@@ -17,7 +20,19 @@ function App() {
   }])
   return (
     <>
-    <Header/>
+      <Header />
+      <Container className="mt-5">
+        <Row>
+          <Col>
+            <NotesList nots={nots} setNots={setNots} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <CreateNotes />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

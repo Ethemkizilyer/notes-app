@@ -10,7 +10,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     <Navbar fixed="top" bg="dark" variant="dark">
         <Container>
             <Navbar.Brand>
-                React typeScript Bootstrap Proje
+                React TypeScript Bootstrap Proje
             </Navbar.Brand>
         </Container>
     </Navbar>
