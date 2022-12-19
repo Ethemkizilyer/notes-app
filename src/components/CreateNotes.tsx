@@ -5,11 +5,13 @@ import { Note } from "../models/note.model";
 interface ICreateNotesProps {
   nots: Note[];
   setNots: React.Dispatch<React.SetStateAction<Note[]>>;
+  saveTasks: () => void;
 }
 
 const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
   nots,
   setNots,
+  saveTasks
 }) => {
   const [error, setError] = React.useState<string>("");
   const titleRef = React.useRef<HTMLInputElement | null>(null);
@@ -34,17 +36,20 @@ const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
         date: new Date().toString(),
       },
     ]);
+    
     (titleRef.current as HTMLInputElement).value = "";
     (textRef.current as HTMLTextAreaElement).value = "";
   };
 
+saveTasks();
+
   return (
     <>
-      <h2>Not Oluştur</h2>
+      <h2 className="mt-3">Not Oluştur</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form className="mt-3 mb-3" onSubmit={(e) => handleSubmit(e)}>
         <Form.Group className="mb-3" controlId="formBasicTitle">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Başlık</Form.Label>
           <Form.Control
             type="text"
             placeholder="Başlık giriniz..."
@@ -52,7 +57,7 @@ const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Label>Text</Form.Label>
+          <Form.Label>İçerik</Form.Label>
           <Form.Control
             as="textarea"
             type="textarea"
@@ -62,7 +67,7 @@ const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="colorInput">Cart Rengi</Form.Label>
+          <Form.Label htmlFor="colorInput">Kart Rengi</Form.Label>
           <Form.Control
             type="color"
             id="colorInput"

@@ -5,9 +5,11 @@ import { Note } from "../models/note.model";
 interface INotsProps {
   note: Note;
   handleDelete: (id: string) => void;
+  
 }
 
 const Nots: React.FunctionComponent<INotsProps> = ({ note, handleDelete }) => {
+    console.log(note);
   return (
     <div className="mb-3">
       <Card style={{ backgroundColor: note.color }}>

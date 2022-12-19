@@ -6,12 +6,14 @@ import Nots from "./Notes";
 interface INotesListProps {
   nots: Note[];
   setNots: React.Dispatch<React.SetStateAction<Note[]>>;
+  saveTasks: () => void;
 }
 
-const NotesList: React.FC<INotesListProps> = ({ nots, setNots }) => {
+const NotesList: React.FC<INotesListProps> = ({ nots, setNots,saveTasks }) => {
   const handleDelete = (id: string) => {
     console.log(id);
     setNots(nots.filter((note) => note.id !== id));
+    saveTasks()
   };
 
   const renderNots = (): JSX.Element[] => {
@@ -21,10 +23,12 @@ const NotesList: React.FC<INotesListProps> = ({ nots, setNots }) => {
   };
 
   return (
-    <>
-      <h2 className="mt-3">Notlar</h2>
-      <div>{renderNots()}</div>
-    </>
+    
+     <>
+     {nots.length > 0 && <><h2 className="mt-3">Notlar</h2>
+      <div>{renderNots()}</div></>}
+      </>
+    
   );
 };
 
