@@ -1,3 +1,5 @@
+![todo-ts-local](https://user-images.githubusercontent.com/106928233/208344281-a3680ce1-bdc0-4237-a5fa-e82e98f09dd2.gif)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
