@@ -11,7 +11,7 @@ interface ICreateNotesProps {
 const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
   nots,
   setNots,
-  saveTasks
+  saveTasks,
 }) => {
   const [error, setError] = React.useState<string>("");
   const titleRef = React.useRef<HTMLInputElement | null>(null);
@@ -21,7 +21,14 @@ const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     // hiçbirşey return etmeyeceği için void dedim
     e.preventDefault();
-
+    let tarih: string =
+      new Date().toLocaleDateString("tr-TR", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })+ "\n" +new Date().toLocaleTimeString();
+console.log(tarih)
     if (titleRef.current?.value === "" || textRef.current?.value === "") {
       return setError("Eksik giriş!!!");
     }
@@ -33,16 +40,17 @@ const CreateNotes: React.FunctionComponent<ICreateNotesProps> = ({
         title: (titleRef.current as HTMLInputElement).value,
         text: (textRef.current as HTMLTextAreaElement).value,
         color: (colorRef.current as HTMLInputElement).value,
-        date: new Date().toString(),
+        date: tarih,
       },
     ]);
-    
+
     (titleRef.current as HTMLInputElement).value = "";
     (textRef.current as HTMLTextAreaElement).value = "";
   };
 
-saveTasks();
+  saveTasks();
 
+//   console.log(new Date().toLocaleDateString(), new Date().toLocaleTimeString());
   return (
     <>
       <h2 className="mt-3">Not Oluştur</h2>

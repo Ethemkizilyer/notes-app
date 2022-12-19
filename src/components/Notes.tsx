@@ -9,7 +9,7 @@ interface INotsProps {
 }
 
 const Nots: React.FunctionComponent<INotsProps> = ({ note, handleDelete }) => {
-    console.log(note);
+    // console.log(note);
   return (
     <div className="mb-3">
       <Card style={{ backgroundColor: note.color }}>
